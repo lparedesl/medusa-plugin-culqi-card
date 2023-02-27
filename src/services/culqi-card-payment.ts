@@ -70,10 +70,9 @@ class CulqiCardPaymentService extends AbstractPaymentService {
     this.manager_ = manager;
     this.customerService_ = customerService;
     this.cartService_ = cartService;
-    this.culqiClient_ = new CulqiClient(culqiLogService, options);
+    this.culqiClient_ = new CulqiClient(culqiLogService);
 
-    const { capture } = options;
-    this.capture_ = capture;
+    this.capture_ = process.env.CULQI_CAPTURE === 'true';
   }
 
   /**

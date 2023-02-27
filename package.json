@@ -1,6 +1,6 @@
 {
   "name": "medusa-plugin-culqi-card",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Medusa plugin for processing credit card payments with Culqi",
   "author": "Luis Paredes <lparedesl@gmail.com>",
   "license": "MIT",

@@ -45,20 +45,20 @@ class CulqiClient {
   protected readonly devEmail_: string;
   protected readonly log_culqi_requests_: boolean;
 
-  constructor(culqiLogService: CulqiLogService, options) {
+  constructor(culqiLogService: CulqiLogService) {
     this.culqiLogService_ = culqiLogService;
 
-    const { secret_key, dev_email, app_env, log_culqi_requests } = options;
-    this.isTestEnv_ = secret_key.startsWith('sk_test_');
-    this.appEnv_ = app_env;
-    this.devEmail_ = dev_email;
-    this.log_culqi_requests_ = log_culqi_requests;
+    const secretKey: string = process.env.CULQI_SECRET_KEY;
+    this.isTestEnv_ = secretKey.startsWith('sk_test_');
+    this.appEnv_ = process.env.CULQI_APP_ENV;
+    this.devEmail_ = process.env.CULQI_DEV_EMAIL;
+    this.log_culqi_requests_ = process.env.CULQI_LOG_CULQI_REQUESTS === 'true';
 
     // API HTTP client
     this.httpInstance = axios.create({
       baseURL: 'https://api.culqi.com/v2',
     });
-    this.httpInstance.defaults.headers.common['Authorization'] = `Bearer ${secret_key}`;
+    this.httpInstance.defaults.headers.common['Authorization'] = `Bearer ${secretKey}`;
   }
 
   private objectToUrlSearchParams(obj: any, rootName: string = null, ignoreList: string[] = null) {

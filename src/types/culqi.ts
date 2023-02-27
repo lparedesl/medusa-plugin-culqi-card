@@ -42,8 +42,8 @@ export type AntifraudDetails = {
 }
 
 export type CustomerMetadata = {
-  IdentificadorWebId?: number
-  Nombre?: string
+  external_user_id?: string | number
+  company_name?: string
 }
 
 export type Customer = {

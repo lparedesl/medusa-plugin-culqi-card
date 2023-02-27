@@ -86,24 +86,24 @@ export const getOrCreateCulqiCustomer = async ({
 
   // check whether customer exists
   if (!culqiCustomerId) {
-    const costosUserId = customer?.metadata?.costos_user_id as number;
+    const externalUserId = customer?.metadata?.external_user_id as string | number;
     const isCompany = customer?.metadata?.is_company as boolean;
-    const ruc = customer?.metadata?.ruc as string;
+    const companyIdentifier = customer?.metadata?.company_identifier as string;
 
     const metadata: CustomerMetadata = {};
 
-    if (costosUserId) {
-      metadata.IdentificadorWebId = costosUserId;
+    if (externalUserId) {
+      metadata.external_user_id = externalUserId;
     }
 
     if (isCompany) {
-      metadata.Nombre = customer.first_name;
+      metadata.company_name = customer.first_name;
     }
 
     // try to create the new one, if not exists
     const culqiCustomerEmail = !isCompany
       ? customer?.email ?? email
-      : `costos.${ruc}@costosperu.net`;
+      : `${companyIdentifier}@email.com`;
     const culqiCustomerFirstName = !isCompany
       ? getCulqiName(customer?.first_name ?? address?.first_name)
       : 'Nombre';
