@@ -1,0 +1,13 @@
+/.idea
+.DS_Store
+/node_modules
+yarn-error.log
+/*.js
+!.babelrc.js
+
+/dist
+
+/api
+/services
+/models
+/subscribers

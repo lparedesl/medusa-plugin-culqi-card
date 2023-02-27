@@ -1,0 +1,8 @@
+/.idea
+.DS_store
+/src
+yarn.lock
+yarn-error.log
+.babelrc.js
+.packito.json
+tsconfig.json
