@@ -6,7 +6,7 @@ export class CulqiLogTable1676247873951 implements MigrationInterface {
     await queryRunner.query(`
       DO $$
       BEGIN
-          IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = "operation_type_enum") THEN
+          IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'operation_type_enum') THEN
               CREATE TYPE "operation_type_enum" AS ENUM('create_token', 'list_tokens', 'get_token', 'update_token', 'create_charge', 'list_charges', 'get_charge', 'update_charge', 'capture_charge', 'create_refund', 'list_refunds', 'get_refund', 'update_refund', 'create_customer', 'list_customers', 'get_customer', 'update_customer', 'delete_customer', 'create_card', 'list_cards', 'get_card', 'update_card', 'delete_card', 'create_plan', 'list_plans', 'get_plan', 'update_plan', 'delete_plan', 'create_subscription', 'list_subscriptions', 'get_subscription', 'update_subscription', 'delete_subscription', 'create_order', 'list_orders', 'confirm_order', 'confirm_order_type', 'get_order', 'update_order', 'delete_order');
           END IF;
       END$$;
