@@ -27,4 +27,12 @@ const plugins = [
 
 When `process.env.CULQI_LOG_CULQI_REQUESTS` is set to `true`, the plugin will log all requests to Culqi to the `culqi_log` table. This is useful for debugging purposes.
 
->Note: A `culqi_log` table will be created in the database irrespective of the value of `process.env.CULQI_LOG_CULQI_REQUESTS`. However, this table will only be used if `process.env.CULQI_LOG_CULQI_REQUESTS` is set to `true`.
+If Culqi requests logging is enabled, run migrations to create the `culqi_log` table:
+
+```bash
+yarn build
+```
+
+```bash
+medusa migrations run
+```
