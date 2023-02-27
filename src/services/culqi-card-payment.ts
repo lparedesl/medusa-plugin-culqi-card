@@ -138,10 +138,6 @@ class CulqiCardPaymentService extends AbstractPaymentService {
     paymentSessionData: PaymentSessionData,
     data: UpdatePaymentData,
   ): Promise<PaymentSessionData> {
-    console.log('==============');
-    console.log('updatePaymentData -- paymentSessionData', paymentSessionData);
-    console.log('updatePaymentData -- data', data);
-    console.log('==============');
     const {
       same_as_shipping_address,
       billing_address,
@@ -347,9 +343,6 @@ class CulqiCardPaymentService extends AbstractPaymentService {
     paymentSession: PaymentSession,
     context: Data,
   ): Promise<{ data: PaymentSessionData; status: PaymentSessionStatus; }> {
-    console.log('==============');
-    console.log('authorizePayment -- paymentSession', paymentSession);
-    console.log('==============');
     const currency = paymentSession.data.currency as string;
     const email = paymentSession.data.email as string;
     const antifraudDetails = paymentSession.data.antifraud_details as AntifraudDetails;
@@ -514,9 +507,6 @@ class CulqiCardPaymentService extends AbstractPaymentService {
    * @returns {Promise} - The result of the operation
    */
   async cancelPayment(payment: Payment): Promise<PaymentData> {
-    console.log('==============');
-    console.log('cancelPayment -- payment', payment);
-    console.log('==============');
     return payment.data;
   }
 
@@ -527,9 +517,6 @@ class CulqiCardPaymentService extends AbstractPaymentService {
    * @returns {Promise} - The result of the operation
    */
   async retrievePayment(paymentData: PaymentData): Promise<Data> {
-    console.log('==============');
-    console.log('retrievePayment -- paymentData', paymentData);
-    console.log('==============');
     const chargeId = paymentData.charge_id as string;
     const [charge, error] = await this.culqiClient_.getChargeAsync(chargeId);
 
